@@ -1,13 +1,339 @@
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+/* ===============================
+   THEME VARIABLES
+================================ */
+:root {
+  --bg-main: #111827;        /* softer dark */
+  --bg-card: #1f2933;        /* cards */
+  --bg-soft: #1a2230;
+
+  --accent-main: #3b82f6;
+  --accent-soft: #60a5fa;
+
+  --text-main: #f9fafb;
+  --text-soft: #cbd5e1;
+
+  --border-soft: rgba(255, 255, 255, 0.1);
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+/* ===============================
+   RESET & BASE
+================================ */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: "Inter", system-ui, -apple-system, BlinkMacSystemFont,
+    sans-serif;
+  background: var(--bg-main);
+  color: var(--text-main);
+  overflow-x: hidden;
+}
+
+/* ===============================
+   GLOBAL SECTIONS
+================================ */
+section {
+  min-height: 100vh;
+  padding: 16vh 7vw;
+}
+
+section h2 {
+  font-size: 3rem;
+  margin-bottom: 3rem;
+  text-align: center;
+  letter-spacing: -0.02em;
+}
+
+section p {
+  max-width: 900px;
+  margin: 0 auto 4rem;
+  font-size: 1.1rem;
+  line-height: 1.9;
+  color: var(--text-soft);
+  text-align: center;
+}
+
+/* ===============================
+   NAVBAR
+================================ */
+.navbar {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 100;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1.2rem 7vw;
+  background: rgba(17, 24, 39, 0.85);
+  backdrop-filter: blur(14px);
+  border-bottom: 1px solid var(--border-soft);
+}
+
+.logo {
+  font-size: 1.6rem;
+  font-weight: 700;
+  color: var(--accent-main);
+}
+
+.nav-links {
+  display: flex;
+  gap: 1.6rem;
+  flex-wrap: wrap;
+}
+
+.nav-btn {
+  background: none;
+  border: none;
+  color: var(--text-soft);
+  display: flex;
+  align-items: center;
+  gap: 0.45rem;
+  cursor: pointer;
+  font-size: 1rem;
+}
+
+.nav-btn:hover {
+  color: var(--text-main);
+}
+
+/* ===============================
+   SECTION DIVIDER
+================================ */
+.section-divider {
+  width: 75%;
+  height: 2px;
+  margin: 7rem auto;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    var(--accent-main),
+    transparent
+  );
+  opacity: 0.6;
+}
+
+/* ===============================
+   GENERIC CARDS
+================================ */
+.card {
+  background: var(--bg-card);
+  border-radius: 22px;
+  padding: 2.5rem;
+  border: 1px solid var(--border-soft);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 25px 50px rgba(59, 130, 246, 0.2);
+}
+
+/* ===============================
+   SERVICES
+================================ */
+.services-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 2rem;
+}
+
+.service-card {
+  text-align: center;
+}
+
+.service-card svg {
+  font-size: 2.8rem;
+  color: var(--accent-main);
+  margin-bottom: 1.5rem;
+}
+
+.service-card h3 {
+  font-size: 1.4rem;
+  margin-bottom: 0.8rem;
+}
+
+/* ===============================
+   EXPERIENCE
+================================ */
+.experience-grid {
+  max-width: 950px;
+  margin: auto;
+  display: grid;
+  gap: 3rem;
+}
+
+.experience-card h3 {
+  font-size: 1.4rem;
+}
+
+.experience-card span {
+  display: block;
+  margin-top: 0.4rem;
+  font-size: 0.95rem;
+  color: var(--accent-soft);
+}
+
+.experience-card p {
+  margin-top: 1.4rem;
+  text-align: left;
+}
+
+/* ===============================
+   CONTACT & CV BUTTON
+================================ */
+.contact-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 2rem;
+  max-width: 900px;
+  margin: 4rem auto;
+}
+
+.contact-card {
+  background: var(--bg-card);
+  padding: 1.8rem;
+  border-radius: 20px;
+  display: flex;
+  gap: 0.8rem;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  border: 1px solid var(--border-soft);
+}
+
+.cv-btn {
+  margin-top: 3rem;
+  padding: 1.1rem 3.2rem;
+  border-radius: 999px;
+  border: none;
+  cursor: pointer;
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: white;
+  background: linear-gradient(
+    90deg,
+    var(--accent-main),
+    var(--accent-soft)
+  );
+}
+/* ===============================
+   REQUEST CV BUTTON CENTER FIX
+================================ */
+.cv-btn-wrapper {
+  display: flex;
+  justify-content: center;
+  margin-top: 4rem;
+}
+
+.cv-btn {
+  padding: 1.1rem 3.5rem;
+  border-radius: 999px;
+  border: none;
+  cursor: pointer;
+  font-size: 1.15rem;
+  font-weight: 600;
+  color: white;
+  background: linear-gradient(
+    90deg,
+    var(--accent-main),
+    var(--accent-soft)
+  );
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.cv-btn:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 18px 40px rgba(59, 130, 246, 0.35);
+}
+/* ===============================
+   MOBILE RESPONSIVENESS
+================================ */
+
+/* Tablets & below */
+@media (max-width: 1024px) {
+  section {
+    padding: 14vh 6vw;
+  }
+
+  section h2 {
+    font-size: 2.4rem;
+  }
+
+  .navbar {
+    padding: 1rem 5vw;
+  }
+}
+
+/* Phones */
+@media (max-width: 768px) {
+  section {
+    padding: 12vh 5vw;
+    min-height: auto;
+  }
+
+  section h2 {
+    font-size: 2rem;
+  }
+
+  section p {
+    font-size: 1rem;
+  }
+
+  .nav-links {
+    gap: 0.8rem;
+  }
+
+  .nav-btn span {
+    display: none; /* icons only on mobile */
+  }
+
+  .logo {
+    font-size: 1.3rem;
+  }
+
+  .services-grid,
+  .contact-grid,
+  .experience-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .card {
+    padding: 1.8rem;
+  }
+
+  .cv-btn {
+    width: 100%;
+    max-width: 320px;
+  }
+}
+
+/* Small phones */
+@media (max-width: 480px) {
+  section h2 {
+    font-size: 1.8rem;
+  }
+
+  .navbar {
+    padding: 0.9rem 4vw;
+  }
+
+  .nav-btn {
+    font-size: 0.9rem;
+  }
+}
+.nav-btn {
+  padding: 0.4rem 0.6rem;
+  border-radius: 8px;
+}
+
+.nav-btn:active {
+  background: rgba(255, 255, 255, 0.06);
 }
