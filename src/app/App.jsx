@@ -8,6 +8,7 @@ import Experience from "../sections/Experience/Experience";
 import Projects from "../sections/Projects/Projects";
 import Contact from "../sections/Contact/Contact";
 
+
 export default function App() {
   return (
     <>

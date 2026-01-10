@@ -21,7 +21,7 @@ export default function Home() {
 
         {/* Name */}
         <h1 style={styles.title}>
-          Hi, I’m <span style={styles.accent}>Mine</span>
+          Hi, I’m <span style={styles.accent}>Ayo</span>
         </h1>
 
         {/* Animated Role Text */}

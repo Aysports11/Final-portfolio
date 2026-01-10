@@ -15,8 +15,7 @@ export default function Navbar() {
 
   return (
     <nav className="navbar">
-      <div className="logo">MineCode</div>
-
+      <div className="logo"></div>
       <div className="nav-links">
         {items.map((item) => (
           <button

@@ -4,14 +4,14 @@ const experienceData = [
   {
     role: "Full-Stack Developer",
     company: "Freelance / Personal Projects",
-    period: "2022 – Present",
+    period: "2024 – Present",
     description:
       "Built scalable web applications using React, Node.js, Express, and MongoDB. Developed responsive UIs, APIs, authentication systems, and deployed projects.",
   },
   {
     role: "Web Development Training",
     company: "Aptech Computer Education",
-    period: "2021 – 2022",
+    period: "2024 – 2025",
     description:
       "Completed professional training in full-stack web development. Gained strong foundations in frontend, backend, and software engineering principles.",
   },
