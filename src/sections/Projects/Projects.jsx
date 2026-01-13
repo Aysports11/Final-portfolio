@@ -34,7 +34,7 @@ const slider = [...projects, ...projects];
 export default function Projects() {
   return (
     <section id="projects">
-      <h2>Projects</h2>
+      <h2>Some of my Projects</h2>
 
       <div className="projects-slider">
         <motion.div
