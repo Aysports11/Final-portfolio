@@ -1,4 +1,5 @@
-import { motion } from "framer-motion";
+import { useState, useEffect } from "react";
+import { motion, AnimatePresence } from "framer-motion";
 import { FaExternalLinkAlt, FaGithub } from "react-icons/fa";
 
 import project1 from "../../assets/projects/project1.jpg";
@@ -7,8 +8,8 @@ import project3 from "../../assets/projects/project3.jpg";
 
 const projects = [
   {
-    title: "A FLYER CARD ",
-    description: "A full Flyer design with React .",
+    title: "A Flyer Card",
+    description: "A full flyer design built with React.",
     image: project1,
     live: "https://firstflyer.netlify.app/",
     code: "https://github.com/Aysports11/first-flyer",
@@ -29,36 +30,47 @@ const projects = [
   },
 ];
 
-const slider = [...projects, ...projects];
-
 export default function Projects() {
+  const [index, setIndex] = useState(0);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setIndex((prev) => (prev + 1) % projects.length);
+    }, 5000); // 5s per project (animation + pause)
+
+    return () => clearInterval(interval);
+  }, []);
+
+  const project = projects[index];
+
   return (
     <section id="projects">
-      <h2>Some of my Projects</h2>
+      <h2>Some of My Projects</h2>
 
       <div className="projects-slider">
-        <motion.div
-          className="projects-track"
-          animate={{ x: ["0%", "-50%"] }}
-          transition={{ duration: 30, ease: "linear", repeat: Infinity }}
-        >
-          {slider.map((p, i) => (
-            <div className="project-slide card" key={i}>
-              <img src={p.image} alt={p.title} />
-              <h3>{p.title}</h3>
-              <p>{p.description}</p>
+        <AnimatePresence mode="wait">
+          <motion.div
+            key={index}
+            className="project-slide card"
+            initial={{ x: 100, opacity: 0 }}
+            animate={{ x: 0, opacity: 1 }}
+            exit={{ x: -100, opacity: 0 }}
+            transition={{ duration: 0.8, ease: "easeInOut" }}
+          >
+            <img src={project.image} alt={project.title} />
+            <h3>{project.title}</h3>
+            <p>{project.description}</p>
 
-              <div className="project-links">
-                <a href={p.live} target="_blank" rel="noreferrer">
-                  <FaExternalLinkAlt /> Live
-                </a>
-                <a href={p.code} target="_blank" rel="noreferrer">
-                  <FaGithub /> Code
-                </a>
-              </div>
+            <div className="project-links">
+              <a href={project.live} target="_blank" rel="noreferrer">
+                <FaExternalLinkAlt /> Live
+              </a>
+              <a href={project.code} target="_blank" rel="noreferrer">
+                <FaGithub /> Code
+              </a>
             </div>
-          ))}
-        </motion.div>
+          </motion.div>
+        </AnimatePresence>
       </div>
     </section>
   );
